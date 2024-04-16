@@ -14,7 +14,7 @@
         enabled: yes
     - name: Remove all files in /var/log/html
       ansible.builtin.shell: |
-        cd /var/log/html; rm -rf *; ls /var/log/html
+        rm -rf /var/log/html/*
       args:
         chdir: somedir/
     - name: Copy artifact
