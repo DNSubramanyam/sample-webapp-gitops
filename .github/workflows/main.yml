@@ -29,9 +29,9 @@ jobs:
               run: chmod 600 ./ansible/key.pem
             - name: run ping playbook
               id: ping
-              run: ansible-playbook ./ansible/ping_test.yaml 
+              run: ansible-playbook ./ansible/ping_test.yaml  -i ./ansible/inventory.yaml
             - name: run setup playbook
               id: setup
               if: steps.ping.outcome == 'success'
-              run: ansible-playbook ./ansible/setup.yaml 
+              run: ansible-playbook ./ansible/setup.yaml -i ./ansible/inventory.yaml
               
