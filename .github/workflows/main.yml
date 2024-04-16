@@ -9,7 +9,6 @@ on:
 
 env:
     PEM_FILE: ${{ secrets.SSH_PRIVATE_KEY }}
-    ANSIBLE_CONFIG: /home/runner/work/sample-webapp-gitops/sample-webapp-gitops/ansible/ansible.cfg
 jobs:
     AppDeploy:
         runs-on: ubuntu-latest
