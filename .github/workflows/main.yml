@@ -1,0 +1,18 @@
+name: Set Sample WebApp
+on: workflow_dispatch
+jobs:
+    AppDeploy:
+        runs-on: ubuntu-latest
+        defaults: 
+            run:
+              shell: bash
+              working-directory: ./ansible
+        steps:
+            - name: code checkout
+              uses: actions/checkout@v4
+            - name: ping test
+              id: ping
+              run: ansible -i ./inventory.yaml -m ping web01
+
+
+    
