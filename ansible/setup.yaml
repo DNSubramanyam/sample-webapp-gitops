@@ -16,7 +16,11 @@
     - name: Remove all files in /var/www/html
       ansible.builtin.shell: |
         rm -rf /var/www/html/*
-    - name: Copy artifact
-      ansible.builtin.copy:
+    # - name: Copy artifact
+    #   ansible.builtin.copy:
+    #     src: ~/src/
+    #     dest: /var/www/html/
+    - name: Synchronization of src on the control machine to dest on the remote hosts
+      ansible.posix.synchronize:
         src: ~/src/
         dest: /var/www/html/
