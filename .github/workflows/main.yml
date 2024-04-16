@@ -20,3 +20,11 @@ jobs:
               run: cat client.pem
             - name: check files
               run: ls -al
+            - name: run ping playbook
+              uses: saubermacherag/ansible-playbook-docker-action@v1.4
+              with:
+                playbookName: 'ping.yaml'
+                inventoryFile: 'inventory.yaml'
+                keyFile: "client.pem"
+                verbosity: "vv"
+              
