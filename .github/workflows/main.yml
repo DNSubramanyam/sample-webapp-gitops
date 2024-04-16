@@ -30,6 +30,8 @@ jobs:
               run: chmod 600 ./ansible/key.pem
             - name: copy config file
               run: cp ./ansible/ansible.cfg ~/.ansible.cfg
+            - name: verify ansible config file
+              run: cat ~/.ansible.cfg
             - name: run ping playbook
               id: ping
               run: ansible-playbook ./ansible/ping_test.yaml  
