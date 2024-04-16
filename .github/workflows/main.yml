@@ -18,9 +18,9 @@ jobs:
               uses: dawidd6/action-ansible-playbook@v2
               with:
                 playbook: /home/runner/work/sample-webapp-gitops/sample-webapp-gitops/ansible/ping.yaml
-                directory: ./
+                directory: /home/runner/work/sample-webapp-gitops/sample-webapp-gitops/ansible
                 key: ${{ secrets.SSH_PRIVATE_KEY }}
-                inventory: ./inventory.yaml
+                inventory: /home/runner/work/sample-webapp-gitops/sample-webapp-gitops/ansible/inventory.yaml
 
 
 
