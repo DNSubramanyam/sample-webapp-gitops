@@ -16,6 +16,8 @@ jobs:
               run: ls -al
             - name: copy ppk
               run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ./client.pem
+            - name: change permission for ppk
+              run: chmod 400 client.pem
             - name: display key
               run: cat client.pem
             - name: check files
