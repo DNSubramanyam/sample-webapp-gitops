@@ -10,9 +10,13 @@ jobs:
         steps:
             - name: code checkout
               uses: actions/checkout@v4
-            - name: ping test
-              id: ping
-              run: ansible -i ./inventory.yaml -m ping web01
+            - name: Run playbook
+              uses: dawidd6/action-ansible-playbook@v2
+              with:
+                playbook: ping.yaml
+                directory: ./
+                key: ${{ secrets.SSH_PRIVATE_KEY }}
+                inventory: ./inventory.yaml
+                
 
 
-    

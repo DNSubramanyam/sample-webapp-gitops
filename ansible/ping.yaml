@@ -1,0 +1,6 @@
+---
+- name: webserver setup
+  hosts: web01
+  tasks:
+    - name: Ping check
+      ansible.builtin.ping:
