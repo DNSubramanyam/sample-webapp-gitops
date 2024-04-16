@@ -1,5 +1,7 @@
 name: Set Sample WebApp
 on: workflow_dispatch
+env:
+    PEM_FILE: ${{ secrets.SSH_PRIVATE_KEY }}
 jobs:
     AppDeploy:
         runs-on: ubuntu-latest
@@ -7,6 +9,7 @@ jobs:
             run:
               shell: bash
               working-directory: ./ansible
+
         steps:
             - name: code checkout
               uses: actions/checkout@v4
@@ -14,14 +17,14 @@ jobs:
               run: pwd
             - name: check files
               run: ls -al
-            # - name: copy ppk
-            #   run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ./client.pem
-            - name: change permission for ppk
-              run: chmod 400 ansible-client.pem
+            - name: Set up SSH key
+              run: |
+                echo "$PEM_FILE" > key.pem
+                chmod 600 key.pem
             # - name: display key
             #   run: cat client.pem
-            # - name: check files
-            #   run: ls -al
+            - name: check files
+              run: ls -al
             - name: run ping playbook
               id: ping
               run: ansible-playbook ping_test.yaml 
