@@ -37,5 +37,6 @@ jobs:
               run: ansible-playbook ping_test.yaml 
             - name: run setup playbook
               id: setup
+              if: steps.ping.outcome == 'success'
               run: ansible-playbook setup.yaml 
               
