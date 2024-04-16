@@ -5,6 +5,12 @@ on:
         - main
       paths: 
         - ansible/**
+    pull_request:
+        branches:
+            - main
+        paths:
+            - ansible/**
+        
 env:
     PEM_FILE: ${{ secrets.SSH_PRIVATE_KEY }}
 jobs:
