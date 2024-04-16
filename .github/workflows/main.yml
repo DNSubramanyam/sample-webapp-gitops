@@ -9,6 +9,7 @@ on:
 
 env:
     PEM_FILE: ${{ secrets.SSH_PRIVATE_KEY }}
+    ANSIBLE_CONFIG: /home/runner/work/sample-webapp-gitops/sample-webapp-gitops/ansible/ansible.cfg
 jobs:
     AppDeploy:
         runs-on: ubuntu-latest
@@ -27,6 +28,10 @@ jobs:
               run: echo "$PEM_FILE" > ./ansible/key.pem   
             - name: Chnage permission for key file
               run: chmod 600 ./ansible/key.pem
+            - name: copy config file
+              run: cp ./ansible/ansible.cfg ~/.ansible.cfg
+            - name: verify config setup
+              run: cat ~/.ansible.cfg
             - name: run ping playbook
               id: ping
               run: ansible-playbook ./ansible/ping_test.yaml  -i ./ansible/inventory.yaml
