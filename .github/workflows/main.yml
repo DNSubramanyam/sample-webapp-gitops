@@ -6,7 +6,7 @@ on:
       paths: 
         - ansible/**
         - src/**
-        
+
 env:
     PEM_FILE: ${{ secrets.SSH_PRIVATE_KEY }}
 jobs:
@@ -15,7 +15,7 @@ jobs:
         defaults: 
             run:
               shell: bash
-
+            
         steps:
             - name: code checkout
               uses: actions/checkout@v4
@@ -26,11 +26,12 @@ jobs:
             - name: Set up SSH key
               run: echo "$PEM_FILE" > ./ansible/key.pem   
             - name: Chnage permission for key file
-              run: chmod 600 key.pem
+              run: chmod 600 ./ansible/key.pem
             - name: run ping playbook
               id: ping
               run: ansible-playbook ./ansible/ping_test.yaml 
             - name: run setup playbook
               id: setup
-              run: ansible-playbook setup.yaml 
+              if: steps.ping.outcome == 'success'
+              run: ansible-playbook ./ansible/setup.yaml 
               

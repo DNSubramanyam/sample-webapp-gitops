@@ -14,5 +14,5 @@
         enabled: yes
     - name: Coopy artifact
       ansible.builtin.copy:
-        src: ./index.html
-        dest: /var/www/html
+        src: ../src/*
+        dest: /var/www/html/
