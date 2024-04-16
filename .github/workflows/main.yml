@@ -31,6 +31,8 @@ jobs:
               run: cp ./ansible/ansible.cfg  ~/.ansible.cfg
             - name: copy inventory file
               run: cp ./ansible/inventory.yaml  ~/
+            - name: copy source code
+              run: cp ./src  ~/src
             - name: verify ansible config file
               run: cat ~/.ansible.cfg
             - name: run ping playbook
