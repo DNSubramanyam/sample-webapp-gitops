@@ -18,3 +18,5 @@ jobs:
               run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ./client.pem
             - name: display key
               run: cat client.pem
+            - name: check files
+              run: ls -al
