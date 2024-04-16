@@ -1,0 +1,6 @@
+all:
+  hosts:
+    web01:
+       ansible_host: 172.31.30.15
+       ansible_user: ec2-user
+

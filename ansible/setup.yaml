@@ -1,0 +1,18 @@
+---
+- name: webserver setup
+  hosts: web01
+  become: yes
+  tasks:
+    - name: Install https
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+    - name: Start service
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: Coopy artifact
+      ansible.builtin.copy:
+        src: ./index.html
+        dest: /var/www/html
