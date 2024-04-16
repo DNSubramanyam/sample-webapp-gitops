@@ -1,6 +1,7 @@
 ---
 - name: webserver setup
   hosts: web01
+  gather_facts: no
   tasks:
     - name: Ping check
       ansible.builtin.ping:
