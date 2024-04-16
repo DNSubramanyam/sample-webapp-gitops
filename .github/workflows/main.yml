@@ -24,6 +24,6 @@ jobs:
             #   run: ls -al
             - name: run ping playbook
               id: ping
-              run: ansible-playbook ping_test.yaml --private-key "${{ secrets.SSH_PRIVATE_KEY}}"
+              run: ansible-playbook ping_test.yaml 
 
               
