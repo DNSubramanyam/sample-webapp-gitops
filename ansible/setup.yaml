@@ -16,8 +16,6 @@
     - name: Remove all files in /var/www/html
       ansible.builtin.shell: |
         rm -rf /var/www/html/*
-      args:
-        chdir: somedir/
     - name: Copy artifact
       ansible.builtin.copy:
         src: ~/src/
