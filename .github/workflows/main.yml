@@ -27,8 +27,10 @@ jobs:
               run: echo "$PEM_FILE" > ~/key.pem   
             - name: Chnage permission for key file
               run: chmod 600 ~/key.pem
-            - name: copy config and inventory files
-              run: cp ./ansible/ansible.cfg ./ansible/inventory.yaml  ~/
+            - name: copy config file
+              run: cp ./ansible/ansible.cfg  ~/.ansible.cfg
+            - name: copy inventory file
+              run: cp ./ansible/inventory.yaml  ~/
             - name: verify ansible config file
               run: cat ~/.ansible.cfg
             - name: run ping playbook
