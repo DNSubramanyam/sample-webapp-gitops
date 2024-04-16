@@ -12,7 +12,12 @@
         name: httpd
         state: started
         enabled: yes
-    - name: Coopy artifact
+    - name: Remove all files in /var/log/html
+      ansible.builtin.shell: |
+        cd /var/log/html; rm -rf *; ls /var/log/html
+      args:
+        chdir: somedir/
+    - name: Copy artifact
       ansible.builtin.copy:
-        src: ~/src
+        src: ~/src/
         dest: /var/www/html/
