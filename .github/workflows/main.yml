@@ -24,9 +24,9 @@ jobs:
             - name: check files
               run: ls -al
             - name: Set up SSH key
-              run: echo "$PEM_FILE" > ~/.ssh/key.pem   
+              run: echo "$PEM_FILE" > ~/key.pem   
             - name: Chnage permission for key file
-              run: chmod 600 ~/.ssh/key.pem
+              run: chmod 600 ~/key.pem
             - name: copy config and inventory files
               run: cp ./ansible/ansible.cfg ./ansible/inventory.yaml  ~/
             - name: verify ansible config file
