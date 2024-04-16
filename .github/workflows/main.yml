@@ -1,5 +1,10 @@
 name: Set Sample WebApp
-on: workflow_dispatch
+on: 
+    push: 
+      branches: 
+        - main
+      paths: 
+        - ansible/**
 env:
     PEM_FILE: ${{ secrets.SSH_PRIVATE_KEY }}
 jobs:
