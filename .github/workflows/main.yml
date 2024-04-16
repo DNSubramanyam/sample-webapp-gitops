@@ -14,14 +14,13 @@ jobs:
               run: pwd
             - name: check files
               run: ls -al
-
-            # - name: Run playbook
-            #   uses: dawidd6/action-ansible-playbook@v2
-            #   with:
-            #     playbook: ./ping.yaml
-            #     directory: ./
-            #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-            #     inventory: ./inventory.yaml
+            - name: Run playbook
+              uses: dawidd6/action-ansible-playbook@v2
+              with:
+                playbook: ./ping.yaml
+                directory: ./
+                key: ${{ secrets.SSH_PRIVATE_KEY }}
+                inventory: ./inventory.yaml
 
 
 
